@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Copy, X } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -37,6 +37,7 @@ export const IdDisplayModal = ({ isOpen, onClose, id, title }: IdDisplayModalPro
             </Button>
           </DialogTitle>
         </DialogHeader>
+        <DialogDescription className="sr-only">Visualizar e copiar ID do sistema.</DialogDescription>
         <div className="space-y-4">
           <div className="bg-muted p-4 rounded-lg">
             <div className="flex items-center justify-between">

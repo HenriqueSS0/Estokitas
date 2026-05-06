@@ -14,7 +14,7 @@ import { FAQSection } from '@/components/landing/FAQSection';
 import { CTASection } from '@/components/landing/CTASection';
 import { AuthForm } from '@/components/auth/AuthForm';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { LogIn, Moon, Sun } from 'lucide-react';
 import { useTheme } from '@/hooks/useTheme';
 import { motion } from 'framer-motion';
@@ -73,6 +73,8 @@ const Index = () => {
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-md p-0 bg-transparent border-none shadow-none [&>button]:hidden">
+                  <DialogTitle className="sr-only">Autenticação</DialogTitle>
+                  <DialogDescription className="sr-only">Faça login ou crie sua conta.</DialogDescription>
                   <AuthForm mode={authMode} onModeChange={setAuthMode} />
                 </DialogContent>
               </Dialog>

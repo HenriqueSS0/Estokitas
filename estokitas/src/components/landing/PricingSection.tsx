@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Check, ArrowRight } from 'lucide-react';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { AuthForm } from '@/components/auth/AuthForm';
 
 const features = [
@@ -70,6 +70,8 @@ export const PricingSection = ({ authOpen, setAuthOpen, authMode, setAuthMode }:
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
+                <DialogTitle className="sr-only">Autenticação</DialogTitle>
+                <DialogDescription className="sr-only">Faça login ou crie sua conta para começar.</DialogDescription>
                 <AuthForm mode={authMode} onModeChange={setAuthMode} />
               </DialogContent>
             </Dialog>

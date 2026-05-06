@@ -36,9 +36,7 @@ export const ApiPage = () => {
       setShowRevokeDialog(false);
     }
   };
-
-  const baseUrl = `${import.meta.env.VITE_API_URL || window.location.origin}/api/v1`;
-
+  const baseUrl = `${window.location.origin}/api/v1`;
   return (
     <div className="saas-page-container">
       {/* Page Header */}
