@@ -1,0 +1,39 @@
+# Variáveis de ambiente e segredos
+.env
+.env.*.local
+*.pem
+
+# Dependências
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Builds e artefatos
+dist/
+build/
+out/
+.next/
+.nuxt/
+.vercel/
+
+# Banco de dados
+*.sqlite
+*.db
+pg_data/
+
+# IDE e Sistema Operacional
+.DS_Store
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ferramentas IA e Cache
+.gemini/
+.agent/
+.turbo/
+.cache/

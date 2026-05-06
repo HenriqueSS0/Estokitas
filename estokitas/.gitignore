@@ -1,0 +1,153 @@
+# ============================================================
+# BUILD & DEPENDENCIES
+# ============================================================
+node_modules/
+dist/
+dist-ssr/
+build/
+out/
+.output/
+.cache/
+*.local
+
+# ============================================================
+# LOGS
+# ============================================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ============================================================
+# 🔐 SENSITIVE & CONFIDENTIAL FILES
+# ============================================================
+
+# Environment variables — NEVER commit these
+.env
+.env.*
+!.env.example
+!.env.template
+!.env.sample
+
+# API Keys / Secrets
+*.secret
+*.secrets
+secrets.json
+secrets.yaml
+secrets.yml
+config/secrets.*
+credentials.json
+service-account.json
+firebase-adminsdk-*.json
+supabase-key.json
+
+# SSL / TLS Certificates & Private Keys
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+*.der
+*.csr
+*.keystore
+*.jks
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+*.ppk
+
+# Authentication Tokens
+.token
+*.token
+auth_token
+auth_token.*
+access_token
+refresh_token
+
+# Cloud Provider Credentials
+.aws/
+.gcloud/
+gcloud-service-key.json
+google-credentials.json
+azure-credentials.json
+
+# Database Credentials / Dumps
+*.sql
+*.dump
+*.db
+*.sqlite
+*.sqlite3
+db_credentials.*
+
+# Password / Config Files
+*.htpasswd
+.htaccess
+config.local.*
+local.config.*
+
+# ============================================================
+# TESTING & COVERAGE
+# ============================================================
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+*.lcov
+
+# ============================================================
+# OS FILES
+# ============================================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ============================================================
+# EDITOR / IDE
+# ============================================================
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+.fleet/
+*.sublime-project
+*.sublime-workspace
+
+# ============================================================
+# PROJECT-SPECIFIC
+# ============================================================
+# Documentation for removed integrations (local reference only)
+STRIPE_INTEGRATION_REMOVED.md
+
+# Temp analysis files
+unused_components.txt
+unused_components_utf8.txt
+
+# ============================================================
+# MISC
+# ============================================================
+*.tgz
+*.tar.gz
+*.bak
+*.tmp
+*.temp
+.turbo/
+.vercel/
+.netlify/
+storybook-static/
