@@ -2,42 +2,26 @@ import { io, Socket } from 'socket.io-client';
 
 const API_URL = import.meta.env.VITE_API_URL || '';
 
-// ── Token helpers ─────────────────────────────────────────────
-export function getToken(): string | null {
-  return localStorage.getItem('auth_token');
-}
 
-export function setToken(token: string): void {
-  localStorage.setItem('auth_token', token);
-}
-
-export function removeToken(): void {
-  localStorage.removeItem('auth_token');
-}
 
 // ── HTTP Client ───────────────────────────────────────────────
 type FetchOptions = Omit<RequestInit, 'body'> & { body?: any };
 
 async function request<T = any>(path: string, options: FetchOptions = {}): Promise<T> {
-  const token = getToken();
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
     ...(options.headers as Record<string, string>),
   };
 
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
-
   const response = await fetch(`${API_URL}${path}`, {
     ...options,
     headers,
+    credentials: 'include', // Necessário para enviar os cookies
     body: options.body !== undefined ? JSON.stringify(options.body) : undefined,
   });
 
   if (response.status === 401) {
-    // Token expirado — limpar sessão
-    removeToken();
+    // Sessão expirada
     window.dispatchEvent(new CustomEvent('auth:expired'));
   }
 

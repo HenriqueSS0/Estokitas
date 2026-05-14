@@ -3,8 +3,7 @@ import {
   ReactNode, useCallback,
 } from 'react';
 import {
-  api, getToken, setToken, removeToken,
-  connectSocket, disconnectSocket,
+  api, connectSocket, disconnectSocket,
 } from '@/lib/api';
 
 // ─── Tipos ────────────────────────────────────────────────────
@@ -38,18 +37,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // Verificar sessão existente ao montar
   useEffect(() => {
-    const token = getToken();
-    if (!token) {
-      setLoading(false);
-      return;
-    }
     api.get<{ user: AuthUser }>('/api/auth/me')
       .then(({ user }) => {
         setUser(user);
         connectSocket(user.id);
       })
       .catch(() => {
-        removeToken();
+        // Falha silenciosa, apenas não está logado
       })
       .finally(() => setLoading(false));
   }, []);
@@ -66,11 +60,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const signUp = useCallback(async (email: string, password: string) => {
     try {
-      const { token, user } = await api.post<{ token: string; user: AuthUser }>(
+      const { user } = await api.post<{ user: AuthUser }>(
         '/api/auth/signup',
         { email, password }
       );
-      setToken(token);
       setUser(user);
       connectSocket(user.id);
       return { error: null };
@@ -81,11 +74,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const signIn = useCallback(async (email: string, password: string) => {
     try {
-      const { token, user } = await api.post<{ token: string; user: AuthUser }>(
+      const { user } = await api.post<{ user: AuthUser }>(
         '/api/auth/login',
         { email, password }
       );
-      setToken(token);
       setUser(user);
       connectSocket(user.id);
       return { error: null };
@@ -95,7 +87,11 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const signOut = useCallback(async () => {
-    removeToken();
+    try {
+      await api.post('/api/auth/logout');
+    } catch (e) {
+      // Ignorar erro de rede no logout
+    }
     setUser(null);
     disconnectSocket();
   }, []);

@@ -63,8 +63,14 @@ router.post('/signup', authLimiter, async (req: Request, res: Response) => {
 
     const token = signToken({ userId: user.id, email: user.email });
 
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 dias
+    });
+
     return res.status(201).json({
-      token,
       user: { id: user.id, email: user.email, created_at: user.created_at },
     });
   } catch (err: any) {
@@ -98,8 +104,15 @@ router.post('/login', authLimiter, async (req: Request, res: Response) => {
     }
 
     const token = signToken({ userId: user.id, email: user.email });
+
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 7 * 24 * 60 * 60 * 1000
+    });
+
     return res.json({
-      token,
       user: { id: user.id, email: user.email },
     });
   } catch (err) {
@@ -197,6 +210,12 @@ router.post('/reset-password/confirm', async (req: Request, res: Response) => {
     console.error('[Auth] Reset password confirm error:', err);
     return res.status(500).json({ error: 'Erro interno do servidor' });
   }
+});
+
+// POST /api/auth/logout
+router.post('/logout', (req: Request, res: Response) => {
+  res.clearCookie('token');
+  return res.json({ success: true });
 });
 
 export default router;
