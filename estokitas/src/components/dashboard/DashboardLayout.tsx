@@ -1,5 +1,5 @@
-import { Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { SidebarProvider, useSidebar } from '@/components/ui/sidebar';
+import { Outlet, useLocation, useNavigate, Navigate } from 'react-router-dom';
+import { SidebarProvider, useSidebar, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/dashboard/AppSidebar';
 import { useAuth } from '@/hooks/useAuth';
 import { NotificationBell } from '@/components/layout/NotificationBell';
@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button';
 import { LogOut, Moon, Sun, Menu, ChevronRight } from 'lucide-react';
 import { useEffect } from 'react';
 import { useTheme } from '@/hooks/useTheme';
-import { Navigate } from 'react-router-dom';
 
 export const DashboardHeader = () => {
   const { toggleSidebar } = useSidebar();
@@ -23,6 +22,10 @@ export const DashboardHeader = () => {
       <div className="dashboard-header-inner">
         {/* Left side */}
         <div className="dashboard-header-left">
+          {/* Mobile toggle */}
+          <div className="md:hidden flex items-center">
+            <SidebarTrigger />
+          </div>
 
           {/* Breadcrumb / greeting */}
           <div className="hidden sm:flex flex-col">

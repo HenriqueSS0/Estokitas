@@ -216,8 +216,13 @@
 }
 .dashboard-main {
   flex: 1;
-  padding: 1.5rem;
+  padding: 1rem;
   overflow: auto;
+}
+@media (min-width: 768px) {
+  .dashboard-main {
+    padding: 1.5rem;
+  }
 }
 
 /* ---------- Sidebar ---------- */
@@ -436,8 +441,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   height: 3.75rem;
+}
+@media (min-width: 768px) {
+  .dashboard-header-inner {
+    padding: 0 1.5rem;
+  }
 }
 .dashboard-header-left {
   display: flex;
@@ -594,10 +604,15 @@
 /* ---------- KPI Cards ---------- */
 .saas-kpi-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 1rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .saas-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
   .saas-kpi-grid {
     grid-template-columns: repeat(4, 1fr);
   }

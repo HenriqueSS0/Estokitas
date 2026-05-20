@@ -35,7 +35,7 @@ export function AppSidebar() {
   return (
     <Sidebar
       className="saas-sidebar"
-      collapsible="none"
+      collapsible="offcanvas"
     >
       <SidebarContent className="saas-sidebar-content">
 

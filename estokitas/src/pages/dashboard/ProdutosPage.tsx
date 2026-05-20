@@ -361,8 +361,8 @@ export const ProdutosPage = () => {
                 </TabsList>
 
                 <TabsContent value="info" className="space-y-6 mt-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="col-span-2">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="md:col-span-2">
                       <Label htmlFor="name">Nome do Produto</Label>
                       <Input
                         id="name"
@@ -497,7 +497,7 @@ export const ProdutosPage = () => {
                         </div>
                         
                         <div className="space-y-3">
-                          <div className="grid grid-cols-2 gap-3">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div>
                               <Label className="text-sm">Nome</Label>
                               <Input
@@ -551,7 +551,7 @@ export const ProdutosPage = () => {
                             </div>
                           </div>
 
-                          <div className="grid grid-cols-2 gap-3">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                             <div>
                               <Label className="text-sm">Preço de Compra</Label>
                               <Input
@@ -645,7 +645,7 @@ export const ProdutosPage = () => {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                     {formData.imagens?.map((image, index) => (
                       <div key={index} className="relative group">
                         <img
